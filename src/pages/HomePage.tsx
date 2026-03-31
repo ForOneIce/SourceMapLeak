@@ -27,12 +27,12 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a href="#checker" className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all">
+                <button onClick={() => document.getElementById('checker')?.scrollIntoView({ behavior: 'smooth' })} className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all cursor-pointer">
                   如何检测漏洞
-                </a>
-                <a href="#case-study" className="px-6 py-3 border border-white/30 rounded-xl font-semibold hover:bg-white/10 transition-all">
+                </button>
+                <button onClick={() => document.getElementById('case-study')?.scrollIntoView({ behavior: 'smooth' })} className="px-6 py-3 border border-white/30 rounded-xl font-semibold hover:bg-white/10 transition-all cursor-pointer">
                   了解更多
-                </a>
+                </button>
               </div>
             </div>
 
