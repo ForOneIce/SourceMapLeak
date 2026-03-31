@@ -6,7 +6,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-3">关于本站</h3>
             <p className="text-sm">
-              致力于 Source Map 漏洞的安全科普与防护指导，帮助开发者和安全研究员理解并防范此类安全风险。
+              一份关于 Source Map 文件泄露漏洞的科普与防护指南，帮助开发者和安全研究员理解并防范此类风险。
             </p>
           </div>
           <div>

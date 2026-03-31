@@ -13,7 +13,7 @@ export default function Header() {
             </div>
             <div>
               <h1 className="text-lg font-bold">SourceMap 安全指南</h1>
-              <p className="text-xs text-purple-300">漏洞科普与防护平台</p>
+              <p className="text-xs text-purple-300">漏洞科普与防护指南</p>
             </div>
           </Link>
           

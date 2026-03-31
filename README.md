@@ -1,6 +1,6 @@
-# Source Map 安全漏洞科普中心
+# SourceMap 安全指南
 
-一个面向 Source Map 文件泄露风险的科普与防护指南站点。以 2026 年 Claude Code npm 包源码泄露事件为切入点，帮助不同角色（新手、开发者、安全研究员）理解、检测和修复 Source Map 泄露问题。
+一份关于 Source Map 文件泄露漏洞的科普与防护指南。以 2026 年 Claude Code npm 包源码泄露事件为切入点，帮助新手、开发者和安全研究员理解、检测和修复 Source Map 泄露问题。
 
 ## 页面结构
 
