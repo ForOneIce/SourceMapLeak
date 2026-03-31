@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -8,7 +8,7 @@ import HunterPage from './pages/HunterPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
         <main className="flex-1">
@@ -32,7 +32,7 @@ function App() {
           <span className="text-sm font-semibold">Buy me a Coffee</span>
         </a>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

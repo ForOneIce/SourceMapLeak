@@ -625,7 +625,7 @@ jobs:
                 to="/"
                 className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-colors"
               >
-                ← 使用检测工具
+                ← 返回首页
               </Link>
               <Link
                 to="/hunter"

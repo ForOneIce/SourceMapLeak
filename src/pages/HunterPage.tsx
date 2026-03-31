@@ -701,7 +701,7 @@ echo "✅ 扫描完成"`}</pre>
                 to="/"
                 className="px-6 py-3 bg-white text-red-600 font-semibold rounded-xl hover:bg-red-50 transition-colors"
               >
-                ← 使用在线检测工具
+                ← 返回首页
               </Link>
               <Link
                 to="/developer"

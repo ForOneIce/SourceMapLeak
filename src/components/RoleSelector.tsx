@@ -17,7 +17,7 @@ const roles = [
     title: '开发人员',
     icon: '👨‍💻',
     description: '我是开发者，想知道如何防止自己的项目出现这个漏洞',
-    features: ['各框架配置指南', '自动化检测工具', 'CI/CD 集成方案', '最佳实践清单'],
+    features: ['各框架配置指南', '检测工具推荐', 'CI/CD 集成方案', '最佳实践清单'],
     color: 'from-blue-500 to-indigo-600',
     bgColor: 'bg-blue-50',
     borderColor: 'border-blue-200',
