@@ -21,9 +21,9 @@ export default function HomePage() {
               </h1>
               
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                2026年3月31日，安全研究员 Chaofan Shou 发现 Anthropic 的 Claude Code 
-                全部源码通过 npm 包里的一个 source map 文件暴露在了公网上。
-                这类漏洞正在影响数以万计的网站和应用。
+                2026年3月31日，安全研究员 Chaofan Shou 发现 Anthropic 的 Claude Code CLI 工具（npm 包 @anthropic-ai/claude-code）
+                因构建流程配置错误，将 .map 文件打包进了发布产物。
+                约 1,900 个 TypeScript 文件、超过 512,000 行完整源代码因此暴露在公网上。
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -172,36 +172,57 @@ export default function HomePage() {
               <div className="bg-slate-700/50 rounded-xl p-5">
                 <h3 className="font-semibold text-orange-400 mb-2">📋 事件概述</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  安全研究员 Chaofan Shou 在分析 Anthropic 发布的 Claude Code npm 包时，
-                  发现包内包含了完整的 source map 文件。通过这个文件，任何人都可以
-                  完整还原 Claude Code 的所有源代码，包括核心算法和内部实现细节。
+                  安全研究员 Chaofan Shou 发现 Anthropic 发布在 npm 上的 
+                  <code className="bg-slate-600 px-1.5 rounded text-xs">@anthropic-ai/claude-code</code> 包（v2.1.88）
+                  因构建流程配置错误，将 <code className="bg-slate-600 px-1.5 rounded text-xs">.map</code> 源映射文件打包进了发布产物。
+                  该文件引用了一个 R2 存储桶 URL，其中包含完整的、未混淆的 TypeScript 原始源码。
                 </p>
               </div>
 
               <div className="bg-slate-700/50 rounded-xl p-5">
-                <h3 className="font-semibold text-orange-400 mb-2">🔍 发现过程</h3>
+                <h3 className="font-semibold text-orange-400 mb-2">🔍 泄露规模</h3>
                 <ul className="text-gray-300 text-sm space-y-2">
-                  <li>• 下载并解压 npm 包</li>
-                  <li>• 发现打包后的 JS 文件末尾包含 sourceMappingURL 注释</li>
-                  <li>• 找到对应的 .map 文件</li>
-                  <li>• 使用 source-map 工具还原完整源码</li>
+                  <li>• 约 <strong className="text-white">1,900 个 TypeScript 文件</strong>，超过 <strong className="text-white">512,000 行</strong>代码</li>
+                  <li>• 核心文件：QueryEngine.ts（46,000 行）、Tool.ts（29,000 行）、commands.ts（25,000 行）</li>
+                  <li>• 暴露约 40 个内置工具（BashTool、FileReadTool、AgentTool、MCPTool 等）</li>
+                  <li>• 暴露约 85 个斜杠命令（/commit、/review、/mcp、/memory 等）</li>
+                  <li>• 暴露内部特性标志：PROACTIVE、VOICE_MODE、BRIDGE_MODE、KAIROS</li>
+                  <li>• 暴露未发布功能：代号 BUDDY 的数字宠物系统、多 Agent 协调模式等</li>
                 </ul>
               </div>
 
               <div className="bg-slate-700/50 rounded-xl p-5">
-                <h3 className="font-semibold text-orange-400 mb-2">⚡ 影响范围</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  所有使用该 npm 包的开发者都可以获取完整源码。
-                  这可能导致商业机密泄露、安全漏洞被发现、竞争对手抄袭等严重后果。
-                </p>
+                <h3 className="font-semibold text-orange-400 mb-2">⚡ 事件影响</h3>
+                <div className="text-gray-300 text-sm space-y-2">
+                  <p>
+                    Anthropic 发现后迅速推送了不含 source map 的新版本，并从 npm 删除了旧版本。
+                    但缓存副本已被下载，数小时内出现多个 GitHub 镜像仓库，累计获得超过 1,100 Stars 和 1,900 Forks。
+                  </p>
+                  <p>
+                    值得注意的是，这并非首次泄露 — 早在 2025 年 2 月 24 日的初始 npm 发布中（v0.2.8），
+                    source map 就已随包一起发布，在被正式发现前已在公网上存在超过 13 个月。
+                  </p>
+                  <p>
+                    这也是 Anthropic 五天内的第二次泄露事件：3月26日，一个 CMS 配置错误曾暴露了
+                    未发布的「Claude Mythos」模型细节和 3,000 份未公开资产。
+                  </p>
+                </div>
               </div>
 
               <div className="bg-green-900/30 border border-green-700 rounded-xl p-5">
-                <h3 className="font-semibold text-green-400 mb-2">✅ 修复措施</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Anthropic 在收到报告后迅速响应，发布了新版本移除了 source map 文件，
-                  并更新了构建流程以防止类似问题再次发生。
-                </p>
+                <h3 className="font-semibold text-green-400 mb-2">💡 事件启示</h3>
+                <div className="text-gray-300 text-sm space-y-2">
+                  <p>
+                    根本原因是构建流程（Build Pipeline）的配置疏忽 — source map 本应仅用于开发环境调试，
+                    却被打包进了生产发布产物。这是一个典型的供应链安全问题。
+                  </p>
+                  <p>
+                    <strong className="text-green-300">防护要点：</strong>在构建阶段禁用 source map 生成；
+                    在 package.json 的 <code className="bg-green-800/50 px-1.5 rounded text-xs">files</code> 字段使用白名单；
+                    发布前用 <code className="bg-green-800/50 px-1.5 rounded text-xs">npm pack --dry-run</code> 检查内容；
+                    在 CI/CD 中加入自动化检查步骤。
+                  </p>
+                </div>
               </div>
             </div>
           </div>

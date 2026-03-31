@@ -12,7 +12,8 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-3">相关事件</h3>
             <p className="text-sm">
-              2026年3月31日，安全研究员 Chaofan Shou 发现 Anthropic Claude Code 源码通过 npm 包中的 source map 文件泄露。
+              2026年3月31日，安全研究员 Chaofan Shou 发现 @anthropic-ai/claude-code npm 包因构建流程配置错误打包了 .map 文件，
+              导致约 1,900 个文件、512,000+ 行完整源码泄露。
             </p>
           </div>
           <div>

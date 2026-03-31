@@ -379,7 +379,8 @@ addEventListener('fetch', event => {
               <div>
                 <h3 className="font-bold text-red-800 text-lg mb-2">Claude Code 事件警示</h3>
                 <p className="text-red-700 text-sm">
-                  2026年3月31日，Anthropic 的 Claude Code npm 包因包含 source map 文件导致完整源码泄露。
+                  2026年3月31日，Anthropic 的 <code className="bg-red-100 px-1 rounded">@anthropic-ai/claude-code</code> npm 包因构建流程配置错误，
+                  将 .map 文件打包进了发布产物，导致约 1,900 个文件、512,000+ 行 TypeScript 完整源码泄露。
                   这提醒我们：<strong>npm 包发布同样需要严格的安全检查</strong>。
                 </p>
               </div>

@@ -662,11 +662,12 @@ echo "✅ 扫描完成"`}</pre>
                 </div>
               </div>
               <p className="text-gray-600 text-sm mb-4">
-                安全研究员 Chaofan Shou 在分析 Anthropic 的 Claude Code npm 包时，
-                发现包内包含了完整的 source map 文件，导致整个应用的源代码可被还原。
+                安全研究员 Chaofan Shou 发现 Anthropic 的 <code className="bg-gray-100 px-1 rounded text-xs">@anthropic-ai/claude-code</code> npm 包
+                因构建流程配置错误打包了 .map 文件，约 1,900 个文件、512,000+ 行 TypeScript 源码被完整还原。
+                数小时内 GitHub 镜像仓库获得 1,100+ Stars。
               </p>
               <div className="bg-red-50 rounded-lg p-3 text-sm text-red-700">
-                <strong>影响：</strong>完整商业源代码暴露
+                <strong>影响：</strong>512,000+ 行完整商业源代码暴露，含未发布功能和内部特性标志
               </div>
             </div>
 
