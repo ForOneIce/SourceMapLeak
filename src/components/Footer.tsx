@@ -10,10 +10,10 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h3 className="text-white font-semibold mb-3">相关事件</h3>
+            <h3 className="text-white font-semibold mb-3">开源协议</h3>
             <p className="text-sm">
-              2026年3月31日，安全研究员 Chaofan Shou 发现 @anthropic-ai/claude-code npm 包因构建流程配置错误打包了 .map 文件，
-              导致约 1,900 个文件、512,000+ 行完整源码泄露。
+              本项目采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">CC BY-NC-SA 4.0</a> 协议开源。
+              可自由分享和改编，但须署名、非商业使用、以相同协议共享。
             </p>
           </div>
           <div>
@@ -24,7 +24,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-slate-700 mt-8 pt-6 text-center text-sm">
-          <p>© 2026 SourceMap 安全科普中心 | 仅供教育用途</p>
+          <p>© 2026 SourceMap 安全指南 | 仅供教育用途</p>
         </div>
       </div>
     </footer>

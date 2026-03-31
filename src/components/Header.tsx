@@ -12,7 +12,7 @@ export default function Header() {
               <span className="text-xl">🔓</span>
             </div>
             <div>
-              <h1 className="text-lg font-bold">SourceMap 安全中心</h1>
+              <h1 className="text-lg font-bold">SourceMap 安全指南</h1>
               <p className="text-xs text-purple-300">漏洞科普与防护平台</p>
             </div>
           </Link>
